@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>歡迎回來 - 啟動頁</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <main class="splash-container">
+        <div class="card">
+            <!-- LOGO 預留位置 -->
+            <header class="logo-section">
+                <svg class="logo" width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="應用程式標誌">
+                    <rect width="80" height="80" rx="20" fill="var(--highlight)"/>
+                    <circle cx="30" cy="55" r="3" fill="var(--tertiary)"/>
+                    <circle cx="50" cy="55" r="3" fill="var(--tertiary)"/>
+                </svg>
+            </header>
+
+            <!-- 中央插畫 -->
+            <section class="illustration-section">
+                <svg class="illustration" width="200" height="160" viewBox="0 0 200 160" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="歡迎插畫">
+                    <!-- 背景圓形 -->
+                    <circle cx="100" cy="80" r="70" fill="var(--secondary)" stroke="var(--stroke)" stroke-width="2"/>
+                    
+                    <!-- 主要圖形 - 抽象的歡迎手勢 -->
+                    <path d="M70 60 Q100 40 130 60 Q120 80 100 85 Q80 80 70 60Z" fill="var(--highlight)" opacity="0.8"/>
+                    
+                    <!-- 裝飾元素 -->
+                    <circle cx="60" cy="50" r="8" fill="var(--tertiary)" opacity="0.6"/>
+                    <circle cx="140" cy="70" r="6" fill="var(--tertiary)" opacity="0.8"/>
+                    <circle cx="80" cy="110" r="4" fill="var(--highlight)" opacity="0.7"/>
+                    <circle cx="120" cy="100" r="5" fill="var(--highlight)" opacity="0.5"/>
+                    
+                    <!-- 星星裝飾 -->
+                    <path d="M50 30 L52 36 L58 36 L53 40 L55 46 L50 42 L45 46 L47 40 L42 36 L48 36 Z" fill="var(--tertiary)"/>
+                    <path d="M150 110 L151.5 114 L155.5 114 L152.25 116.5 L153.75 120.5 L150 118 L146.25 120.5 L147.75 116.5 L144.5 114 L148.5 114 Z" fill="var(--highlight)"/>
+                    
+                    <!-- 波浪線 -->
+                    <path d="M30 90 Q40 85 50 90 T70 90" stroke="var(--stroke)" stroke-width="2" fill="none" opacity="0.4"/>
+                    <path d="M130 45 Q140 40 150 45 T170 45" stroke="var(--stroke)" stroke-width="2" fill="none" opacity="0.4"/>
+                </svg>
+            </section>
+
+            <!-- 文字內容 -->
+            <section class="content-section">
+                <h1 class="headline">歡迎回來</h1>
+                <p class="subtitle">準備好開始您的精彩旅程了嗎？</p>
+            </section>
+
+            <!-- CTA 按鈕 -->
+            <section class="cta-section">
+                <button class="cta-button" type="button" aria-label="開始使用應用程式">
+                    開始使用
+                </button>
+            </section>
+        </div>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
