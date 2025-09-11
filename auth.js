@@ -2,7 +2,6 @@
 
 class AuthSystem {
   constructor() {
-    this.currentTab = 'login';
     this.otpTimer = null;
     this.otpCountdown = 60;
     this.isOtpDialogOpen = false;
@@ -12,8 +11,6 @@ class AuthSystem {
   }
 
   init() {
-    this.setupTabSwitching();
-    this.setupKeyboardNavigation();
     this.setupPhoneInput();
     this.setupSocialLogin();
     this.setupOtpDialog();
@@ -21,92 +18,7 @@ class AuthSystem {
     this.setupAccessibility();
   }
 
-  // 標籤切換功能
-  setupTabSwitching() {
-    const tabButtons = document.querySelectorAll('.tab-button');
-    const tabPanels = document.querySelectorAll('.tab-panel');
 
-    tabButtons.forEach(button => {
-      button.addEventListener('click', (e) => {
-        const targetTab = e.target.dataset.tab;
-        this.switchTab(targetTab);
-      });
-    });
-  }
-
-  switchTab(tabName) {
-    const tabButtons = document.querySelectorAll('.tab-button');
-    const tabPanels = document.querySelectorAll('.tab-panel');
-
-    // 更新按鈕狀態
-    tabButtons.forEach(button => {
-      button.classList.toggle('active', button.dataset.tab === tabName);
-      button.setAttribute('aria-selected', button.dataset.tab === tabName);
-    });
-
-    // 更新面板顯示
-    tabPanels.forEach(panel => {
-      panel.classList.toggle('active', panel.id === `${tabName}-panel`);
-      panel.setAttribute('aria-hidden', panel.id !== `${tabName}-panel`);
-    });
-
-    this.currentTab = tabName;
-    
-    // 更新頁面標題和描述
-    this.updateTabContent(tabName);
-  }
-
-  updateTabContent(tabName) {
-    const title = document.querySelector('.auth-title');
-    const subtitle = document.querySelector('.auth-subtitle');
-    const primaryBtn = document.querySelector('.primary-btn');
-
-    if (tabName === 'login') {
-      title.textContent = '歡迎回來';
-      subtitle.textContent = '登入您的帳戶以繼續使用';
-      primaryBtn.textContent = '以手機號碼登入';
-    } else {
-      title.textContent = '建立帳戶';
-      subtitle.textContent = '註冊新帳戶開始您的旅程';
-      primaryBtn.textContent = '以手機號碼註冊';
-    }
-  }
-
-  // 鍵盤導航支援
-  setupKeyboardNavigation() {
-    const tabContainer = document.querySelector('.tab-container');
-    
-    tabContainer.addEventListener('keydown', (e) => {
-      const tabButtons = Array.from(document.querySelectorAll('.tab-button'));
-      const currentIndex = tabButtons.findIndex(btn => btn === document.activeElement);
-      
-      let newIndex = currentIndex;
-      
-      switch (e.key) {
-        case 'ArrowLeft':
-          e.preventDefault();
-          newIndex = currentIndex > 0 ? currentIndex - 1 : tabButtons.length - 1;
-          break;
-        case 'ArrowRight':
-          e.preventDefault();
-          newIndex = currentIndex < tabButtons.length - 1 ? currentIndex + 1 : 0;
-          break;
-        case 'Home':
-          e.preventDefault();
-          newIndex = 0;
-          break;
-        case 'End':
-          e.preventDefault();
-          newIndex = tabButtons.length - 1;
-          break;
-        default:
-          return;
-      }
-      
-      tabButtons[newIndex].focus();
-      this.switchTab(tabButtons[newIndex].dataset.tab);
-    });
-  }
 
   // 手機號碼輸入處理
   setupPhoneInput() {
@@ -165,12 +77,12 @@ class AuthSystem {
     const appleBtn = document.querySelector('.apple-btn');
 
     googleBtn.addEventListener('click', () => {
-      console.log('Google 登入/註冊 - 模擬點擊');
+      console.log('Google 登入 - 模擬點擊');
       this.showToast('Google 登入功能開發中...', 'info');
     });
 
     appleBtn.addEventListener('click', () => {
-      console.log('Apple 登入/註冊 - 模擬點擊');
+      console.log('Apple 登入 - 模擬點擊');
       this.showToast('Apple 登入功能開發中...', 'info');
     });
   }
@@ -403,21 +315,6 @@ class AuthSystem {
     liveRegion.className = 'sr-only';
     liveRegion.id = 'live-region';
     document.body.appendChild(liveRegion);
-    
-    // 設置初始 ARIA 屬性
-    const tabButtons = document.querySelectorAll('.tab-button');
-    const tabPanels = document.querySelectorAll('.tab-panel');
-    
-    tabButtons.forEach((button, index) => {
-      button.setAttribute('role', 'tab');
-      button.setAttribute('aria-controls', `${button.dataset.tab}-panel`);
-      button.setAttribute('aria-selected', index === 0 ? 'true' : 'false');
-    });
-    
-    tabPanels.forEach((panel, index) => {
-      panel.setAttribute('role', 'tabpanel');
-      panel.setAttribute('aria-hidden', index === 0 ? 'false' : 'true');
-    });
   }
 
   // Toast 通知系統
@@ -468,10 +365,10 @@ class AuthSystem {
 document.addEventListener('DOMContentLoaded', () => {
   new AuthSystem();
   
-  // 設置初始焦點
-  const firstTabButton = document.querySelector('.tab-button');
-  if (firstTabButton) {
-    firstTabButton.focus();
+  // 設置初始焦點到手機號碼輸入框
+  const phoneInput = document.querySelector('.phone-input');
+  if (phoneInput) {
+    phoneInput.focus();
   }
 });
 

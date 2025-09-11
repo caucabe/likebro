@@ -95,53 +95,8 @@ body {
   transform: translateY(-2px);
 }
 
-/* 標籤切換 */
-.tab-container {
-  display: flex;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 12px;
-  padding: 4px;
-  margin-bottom: 32px;
-  position: relative;
-}
-
-.tab-button {
-  flex: 1;
-  background: transparent;
-  border: none;
-  color: var(--text-muted);
-  font-size: 16px;
-  font-weight: 500;
-  padding: 12px 16px;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: var(--transition-fast);
-  position: relative;
-  z-index: 2;
-}
-
-.tab-button.active {
-  color: var(--text-primary);
-  background: rgba(255, 255, 255, 0.2);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-.tab-button:hover:not(.active) {
-  color: var(--text-secondary);
-  background: rgba(255, 255, 255, 0.05);
-}
-
-.tab-button:focus-visible {
-  outline: 2px solid var(--accent-secondary);
-  outline-offset: 2px;
-}
-
-/* 標籤面板 */
-.tab-panel {
-  display: none;
-}
-
-.tab-panel.active {
+/* 登入面板 */
+.login-panel {
   display: block;
   animation: fadeIn 0.3s ease-out;
 }
