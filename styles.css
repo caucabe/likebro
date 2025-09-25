@@ -1,0 +1,364 @@
+/* CSS 變數 - 玻璃擬態主題 */
+:root {
+  --bg-primary: #667eea;
+  --bg-secondary: #764ba2;
+  --bg-tertiary: #f093fb;
+  --bg-quaternary: #f5576c;
+  --glass-bg: rgba(255, 255, 255, 0.15);
+  --glass-border: rgba(255, 255, 255, 0.2);
+  --glass-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+  --glass-shadow-hover: 0 15px 35px rgba(31, 38, 135, 0.5);
+  
+  --headline: #ffffff;
+  --paragraph: rgba(255, 255, 255, 0.9);
+  --button: rgba(255, 255, 255, 0.25);
+  --button-hover: rgba(255, 255, 255, 0.35);
+  --buttonText: #ffffff;
+  --stroke: rgba(255, 255, 255, 0.3);
+  --accent: #ff6b6b;
+  --accent-secondary: #4ecdc4;
+  
+  /* 玻璃擬態設計變數 */
+  --card-radius: 20px;
+  --blur-strength: 16px;
+  --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --transition-fast: all 0.2s ease-out;
+}
+
+/* 重置與基礎樣式 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 25%, var(--bg-tertiary) 75%, var(--bg-quaternary) 100%);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+  color: var(--paragraph);
+  line-height: 1.6;
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* 動態漸層背景動畫 */
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* 背景裝飾 - 玻璃擬態浮動元素 */
+body::before {
+  content: '';
+  position: fixed;
+  top: -10%;
+  left: -10%;
+  width: 120%;
+  height: 120%;
+  background: 
+    radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, rgba(255, 255, 255, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 50% 10%, rgba(255, 255, 255, 0.06) 0%, transparent 40%),
+    radial-gradient(circle at 80% 30%, rgba(255, 255, 255, 0.05) 0%, transparent 45%),
+    radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.04) 0%, transparent 35%);
+  animation: float 25s ease-in-out infinite;
+  z-index: -1;
+  backdrop-filter: blur(1px);
+}
+
+@keyframes float {
+  0%, 100% { 
+    transform: translate(0, 0) rotate(0deg) scale(1); 
+    opacity: 0.8;
+  }
+  25% { 
+    transform: translate(-30px, -20px) rotate(1deg) scale(1.05); 
+    opacity: 0.9;
+  }
+  50% { 
+    transform: translate(20px, -30px) rotate(-0.5deg) scale(0.95); 
+    opacity: 1;
+  }
+  75% { 
+    transform: translate(30px, 20px) rotate(1.5deg) scale(1.02); 
+    opacity: 0.85;
+  }
+}
+
+/* 主容器 */
+.splash-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+/* 玻璃擬態卡片樣式 */
+.card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--blur-strength));
+  -webkit-backdrop-filter: blur(var(--blur-strength));
+  border-radius: var(--card-radius);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  padding: 48px 36px;
+  width: 100%;
+  max-width: 380px;
+  text-align: center;
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--glass-border), transparent);
+  opacity: 0.8;
+}
+
+.card:hover {
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: var(--glass-shadow-hover);
+  transform: translateY(-4px) scale(1.02);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* LOGO 區域 */
+.logo-section {
+  margin-bottom: 32px;
+}
+
+.logo {
+  transition: var(--transition);
+}
+
+.logo:hover {
+  transform: scale(1.05);
+}
+
+/* 插畫區域 */
+.illustration-section {
+  margin-bottom: 32px;
+}
+
+.illustration {
+  width: 100%;
+  max-width: 200px;
+  height: auto;
+  transition: var(--transition);
+}
+
+.illustration:hover {
+  transform: scale(1.02);
+}
+
+/* 文字內容 */
+.content-section {
+  margin-bottom: 40px;
+}
+
+.headline {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--headline);
+  margin-bottom: 12px;
+  letter-spacing: -0.02em;
+}
+
+.subtitle {
+  font-size: 1rem;
+  color: var(--paragraph);
+  opacity: 0.8;
+  line-height: 1.5;
+}
+
+/* 玻璃擬態 CTA 按鈕 */
+.cta-section {
+  margin-top: 12px;
+}
+
+.cta-button {
+  background: var(--button);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: var(--buttonText);
+  border: 1px solid var(--glass-border);
+  border-radius: 50px;
+  padding: 18px 36px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  width: 100%;
+  max-width: 220px;
+  box-shadow: 0 8px 32px rgba(255, 255, 255, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  position: relative;
+  overflow: hidden;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.cta-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.6s ease;
+}
+
+.cta-button:hover::before {
+  left: 100%;
+}
+
+.cta-button:hover {
+  background: var(--button-hover);
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 12px 40px rgba(255, 255, 255, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.cta-button:active {
+  transform: translateY(-1px) scale(1.02);
+  transition: var(--transition-fast);
+}
+
+/* Focus 樣式 */
+.cta-button:focus-visible {
+  outline: 2px solid var(--tertiary);
+  outline-offset: 2px;
+}
+
+.logo:focus-visible {
+  outline: 2px solid var(--tertiary);
+  outline-offset: 4px;
+  border-radius: 8px;
+}
+
+/* 響應式設計 - 玻璃擬態優化 */
+@media (min-width: 480px) {
+  .card {
+    max-width: 420px;
+    padding: 56px 44px;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+  
+  .headline {
+    font-size: 2.25rem;
+    letter-spacing: -0.03em;
+  }
+  
+  .subtitle {
+    font-size: 1.1rem;
+    opacity: 0.95;
+  }
+  
+  .cta-button {
+    max-width: 240px;
+    padding: 20px 40px;
+    font-size: 1.15rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .splash-container {
+    padding: 40px;
+  }
+  
+  .card {
+    max-width: 450px;
+    padding: 64px 48px;
+  }
+  
+  .headline {
+    font-size: 2.5rem;
+  }
+  
+  .subtitle {
+    font-size: 1.2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .card:hover {
+    transform: translateY(-6px) scale(1.03);
+  }
+  
+  .cta-button:hover {
+    transform: translateY(-4px) scale(1.08);
+  }
+}
+
+/* 減少動畫偏好設定 */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  body::before {
+    animation: none;
+  }
+  
+  .cta-button:hover {
+    transform: none;
+  }
+  
+  .card:hover {
+    transform: none;
+  }
+  
+  .logo:hover,
+  .illustration:hover {
+    transform: none;
+  }
+}
+
+/* 高對比模式支援 */
+@media (prefers-contrast: high) {
+  .card {
+    border: 2px solid var(--stroke);
+  }
+  
+  .cta-button {
+    border: 2px solid var(--buttonText);
+  }
+}
+
+/* 暗色模式玻璃擬態支援 */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-primary: #1a1a2e;
+    --bg-secondary: #16213e;
+    --bg-tertiary: #0f3460;
+    --bg-quaternary: #533483;
+    --glass-bg: rgba(255, 255, 255, 0.08);
+    --glass-border: rgba(255, 255, 255, 0.15);
+    --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    --button: rgba(255, 255, 255, 0.15);
+    --button-hover: rgba(255, 255, 255, 0.25);
+  }
+  
+  .card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .card:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+  }
+}

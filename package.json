@@ -1,0 +1,43 @@
+{
+  "name": "glassmorphism-auth-system",
+  "version": "1.0.0",
+  "description": "玻璃拟态风格的登入/注册系统 - Glassmorphism Style Login/Registration System",
+  "main": "index.html",
+  "scripts": {
+    "start": "start index.html",
+    "deploy": "deploy-to-github.bat",
+    "auto-upload": "auto-upload.bat",
+    "serve": "python -m http.server 8000"
+  },
+  "keywords": [
+    "glassmorphism",
+    "auth",
+    "login",
+    "registration",
+    "ui",
+    "frontend",
+    "responsive",
+    "accessibility"
+  ],
+  "author": "Lucky",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lucky/glassmorphism-auth-system.git"
+  },
+  "homepage": "https://github.com/lucky/glassmorphism-auth-system#readme",
+  "bugs": {
+    "url": "https://github.com/lucky/glassmorphism-auth-system/issues"
+  },
+  "devDependencies": {},
+  "dependencies": {},
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "browserslist": [
+    "Chrome >= 88",
+    "Firefox >= 87",
+    "Safari >= 14",
+    "Edge >= 88"
+  ]
+}
